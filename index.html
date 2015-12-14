@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="legorafi_app">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/table.css"/>
+		<script src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/legorafi.json"></script>
+		<script src="js/legorafi.js"></script>
+	</head>
+	<body ng-app="legorafi_app">
+		<div ng-controller="pages_ctrl as pages">
+			<table>
+				<thead>
+					<tr>
+						<th><button class="btn">Page</button></th>
+						<th><button class="btn" ng-click="order('comments')">Commentaires</button></th>
+						<th><button class="btn" ng-click="order('shares')">Partages</button></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="page in pages.links | orderBy:predicate:reverse">
+						<td><a ng-href="http://www.legorafi.fr{{page.link}}">{{page.title}}</a></td>
+						<td>{{page.comments}}</td>
+						<td>{{page.shares}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
